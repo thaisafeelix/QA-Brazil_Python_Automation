@@ -49,7 +49,7 @@ class TestUrbanRoutes:
         route_page = UrbanRoutesPage(self.driver)
         route_page.enter_locations(data.ADDRESS_FROM, data.ADDRESS_TO)
         WebDriverWait(self.driver, timeout=1).until(lambda d: True)
-        phone_number = retrieve_phone_code() + "12312312312"
+        phone_number = retrieve_phone_code(self.driver) + "12312312312"
         route_page.fill_phone_number(phone_number)
         WebDriverWait(self.driver, timeout=1).until(lambda d: True)
         filled_number = route_page.get_phone_number_value()
@@ -97,7 +97,7 @@ class TestUrbanRoutes:
         route_page.click_taxi_option()
         route_page.click_comfort_icon()
         for _ in range(2):
-            routes_page.add_ice_cream()
+            route_page.add_ice_cream()
         assert int(route_page.qnt_sorvete()) == 2
 
     def test_car_search_model_appears(self):

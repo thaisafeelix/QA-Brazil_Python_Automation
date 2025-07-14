@@ -135,12 +135,13 @@ class UrbanRoutesPage:
         return switch.is_selected()
 
     def add_ice(self):
-        self.driver.find_element(*self.add_icecream).clicl()
+        self.driver.find_element(*self.add_icecream).click()
 
     def qnt_sorvete(self):
-        return self.driver.find_element(*self.driver, 10).until(
-            EC.presence_of_element_located(self.pop_up))
-        return  pop_up.text
+        return WebDriverWait(self.driver, 10).until(
+            EC.presence_of_element_located(self.qnt_icecream)
+        ).text
+
 
     def call_taxi(self):
         self.driver.find_element(*self.call_taxi_button).click()
